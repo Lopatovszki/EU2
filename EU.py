@@ -1,7 +1,7 @@
 """ EUcsatlakozas.txt    
 Ausztria;1995.01.01
 """
-
+import collections
 
 with open ("EUcsatlakozas.txt" , "r" , encoding = "latin2") as f:
   lista = []
@@ -38,15 +38,27 @@ for orszag , datum  in lista:
     számláló += 1
 
 if számláló > 0 :
-  print("5.feladat: Májusban volt csatlakozás!")
+  print("6.feladat: Májusban volt csatlakozás!")
 
 else:
-   print("5.feladat: Májusban nem volt csatlakozás!")
+   print("6.feladat: Májusban nem volt csatlakozás!")
 
 #7.feladat
 utolsó_dátum = ""
 for orszag , datum  in lista:
+  if utolsó_dátum < datum:
+    utolsó_dátum = datum
+    utolsó_orszag = orszag
+print(f'7.feladat: Legutpljára csatlakozott ország : {utolsó_orszag}') 
   
+cnt = collections.Counter()
+for orszag , datum  in lista:
+  cnt[datum[0:4]] += 1
+print('8.feladat: Statisztika')
+for év, darab in  cnt.items():
+  print(f'     {év} - {darab} ország')
+
+
 
 
 
